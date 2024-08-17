@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .info {
+        background-color: lightcyan;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .info li {
+        list-style: none;
+        background-color: rebeccapurple;
+        color: white;
+        font-weight: bold;
+        font-size: 50px;
+        padding: 5px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .info li div {
+        margin-top: -25px;
+      }
+      .info li img {
+        width: 20px;
+        opacity: 1;
+        cursor: pointer;
+      }
+      .info li img:hover {
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul id="alluser" class="info"></ul>
+  </body>
+</html>

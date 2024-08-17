@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de nombre</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        width: 500px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"] {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button[type="button"] {
+        background-color: #118802;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Agrega un nuevo nombre</h1>
+      <form id="sendpost">
+        <label for="name">Nombre:</label>
+        <input type="text" id="names" name="names" required />
+        <button type="submit">Enviar</button>
+        <a href="file:///G:/pythonExcerses/data25/cliente/crud/getall.html"><button type="button">Volver</button></a>
+      </form>
+    </div>
+    <script>
+      document.getElementById("sendpost").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("names").value;
+        if (name) {
+          fetch("http://localhost:8000/save", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ names: name }),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              alert(res.mensaje);
+              window.location = `file:///G:/pythonExcerses/data25/cliente/crud/getshow.html?names=${name}`;
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        } else {
+            alert('Debe escribir un dato');
+        }
+      });
+    </script>
+  </body>
+</html>

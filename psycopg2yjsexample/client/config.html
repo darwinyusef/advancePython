@@ -1,0 +1,18 @@
+<script>
+  fetch("http://localhost:8000/")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  fetch("http://localhost:8000/items/12?q=hello")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+</script>
